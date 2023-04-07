@@ -8,14 +8,14 @@
 using namespace std;
 
 
-void SymbolFrequencies(string& str) { //частоти символів 
-	unordered_map<char, int> freq;//контейнер для елементів 
+void SymbolFrequencies(string& str) { //С‡Р°СЃС‚РѕС‚Рё СЃРёРјРІРѕР»С–РІ 
+	unordered_map<char, int> freq;//РєРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ РµР»РµРјРµРЅС‚С–РІ 
 	for (const char& c : str) {
 
-		freq[c]++;// добавляемо елементи до контецнеру 
+		freq[c]++;// РґРѕР±Р°РІР»СЏРµРјРѕ РµР»РµРјРµРЅС‚Рё РґРѕ РєРѕРЅС‚РµС†РЅРµСЂСѓ 
 	}
-	vector<pair<char, int>> vec(freq.begin(), freq.end());//создаем вектор который хранит ключ и значение 
-	sort(vec.begin(), vec.end(), [](const pair<char, int>& a, const pair<char, int>& b) {//для удобства сортируем по убиванию //GITH
+	vector<pair<char, int>> vec(freq.begin(), freq.end());//СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РєР»СЋС‡ Рё Р·РЅР°С‡РµРЅРёРµ 
+	sort(vec.begin(), vec.end(), [](const pair<char, int>& a, const pair<char, int>& b) {//РґР»СЏ СѓРґРѕР±СЃС‚РІР° СЃРѕСЂС‚РёСЂСѓРµРј РїРѕ СѓР±РёРІР°РЅРёСЋ //GITH
 		return a.second > b.second;
 		});
 	for (auto& pair : vec)
@@ -25,20 +25,20 @@ void SymbolFrequencies(string& str) { //частоти символів
  
 
 
-void bigramsWithoutIntersection(string& str) { //, біграми з перетином
+void bigramsWithoutIntersection(string& str) { //, Р±С–РіСЂР°РјРё Р· РїРµСЂРµС‚РёРЅРѕРј
 	unordered_map<string, int> bigram_counts;
 
-	for (int i = 0; i < str.length() - 1; i++) {//перебира рядок ,рахуе біграми
-		string bigram = str.substr(i, 2); // бере поточну біграму 
-		bigram_counts[bigram]++; //кількість біграм 
+	for (int i = 0; i < str.length() - 1; i++) {//РїРµСЂРµР±РёСЂР° СЂСЏРґРѕРє ,СЂР°С…СѓРµ Р±С–РіСЂР°РјРё
+		string bigram = str.substr(i, 2); // Р±РµСЂРµ РїРѕС‚РѕС‡РЅСѓ Р±С–РіСЂР°РјСѓ 
+		bigram_counts[bigram]++; //РєС–Р»СЊРєС–СЃС‚СЊ Р±С–РіСЂР°Рј 
 	}
 
-	vector<pair<string, int>> vec(bigram_counts.begin(), bigram_counts.end());//создаем вектор который хранит ключ и значение 
-	sort(vec.begin(), vec.end(), [](const pair<string, int>& a, const pair<string, int>& b) {//для удобства сортируем по убиванию //GITH
+	vector<pair<string, int>> vec(bigram_counts.begin(), bigram_counts.end());//СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РєР»СЋС‡ Рё Р·РЅР°С‡РµРЅРёРµ 
+	sort(vec.begin(), vec.end(), [](const pair<string, int>& a, const pair<string, int>& b) {//РґР»СЏ СѓРґРѕР±СЃС‚РІР° СЃРѕСЂС‚РёСЂСѓРµРј РїРѕ СѓР±РёРІР°РЅРёСЋ //GITH
 		return a.second > b.second;
 		});
 
-	// вивод 
+	// РІРёРІРѕРґ 
 	for (auto& pair : vec) {
 		cout << '{' << pair.first << ": " << pair.second << '}' << endl;
 	}
@@ -46,19 +46,19 @@ void bigramsWithoutIntersection(string& str) { //, біграми з перетином
 }
 
 
-void bigramsIntersection(string& str) {//, біграми  перетином
+void bigramsIntersection(string& str) {//, Р±С–РіСЂР°РјРё  РїРµСЂРµС‚РёРЅРѕРј
 	unordered_map<string, int> bigram_counts;
 
-	for (int i = 0; i < str.length() - 1; i++) {//перебира рядок ,рахуе біграми
+	for (int i = 0; i < str.length() - 1; i++) {//РїРµСЂРµР±РёСЂР° СЂСЏРґРѕРє ,СЂР°С…СѓРµ Р±С–РіСЂР°РјРё
 
-		string bigram = str.substr(i++, 2); // бере біграму парну
-		bigram_counts[bigram]++; //кількість біграм 
+		string bigram = str.substr(i++, 2); // Р±РµСЂРµ Р±С–РіСЂР°РјСѓ РїР°СЂРЅСѓ
+		bigram_counts[bigram]++; //РєС–Р»СЊРєС–СЃС‚СЊ Р±С–РіСЂР°Рј 
 	}
-	vector<pair<string, int>> vec(bigram_counts.begin(), bigram_counts.end());//создаем вектор который хранит ключ и значение 
-	sort(vec.begin(), vec.end(), [](const pair<string, int>& a, const pair<string, int>& b) {//для удобства сортируем по убиванию //GITH
+	vector<pair<string, int>> vec(bigram_counts.begin(), bigram_counts.end());//СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РєР»СЋС‡ Рё Р·РЅР°С‡РµРЅРёРµ 
+	sort(vec.begin(), vec.end(), [](const pair<string, int>& a, const pair<string, int>& b) {//РґР»СЏ СѓРґРѕР±СЃС‚РІР° СЃРѕСЂС‚РёСЂСѓРµРј РїРѕ СѓР±РёРІР°РЅРёСЋ //GITH
 		return a.second > b.second;
 		});
-	// вивод 
+	// РІРёРІРѕРґ 
 	for (auto& pair : vec) {
 		cout << '{' << pair.first << ": " << pair.second << '}' << endl;
 	}
@@ -66,7 +66,7 @@ void bigramsIntersection(string& str) {//, біграми  перетином
 }
 
 
-string filterWithoutSpace(string& text, string& ABC) { //метод фильтрации текста без пробелов 
+string filterWithoutSpace(string& text, string& ABC) { //РјРµС‚РѕРґ С„РёР»СЊС‚СЂР°С†РёРё С‚РµРєСЃС‚Р° Р±РµР· РїСЂРѕР±РµР»РѕРІ 
 
 	string filterText = "";
 	for (char c : text)
@@ -74,13 +74,13 @@ string filterWithoutSpace(string& text, string& ABC) { //метод фильтрации текста
 		char v = tolower(c);
 
 
-		if (ABC.find(v) != string::npos)  //проверяет, является ли данный символ алфавитом или нет
+		if (ABC.find(v) != string::npos)  //РїСЂРѕРІРµСЂСЏРµС‚, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РґР°РЅРЅС‹Р№ СЃРёРјРІРѕР» Р°Р»С„Р°РІРёС‚РѕРј РёР»Рё РЅРµС‚
 		{
 			filterText += v;
 
 		}
 		else if (isspace(v)) {
-			continue; //пропускаем пробелы 
+			continue; //РїСЂРѕРїСѓСЃРєР°РµРј РїСЂРѕР±РµР»С‹ 
 		}
 	}
 
@@ -90,20 +90,20 @@ string filterWithoutSpace(string& text, string& ABC) { //метод фильтрации текста
 string filterSpace(string& text, string& ABC) {
 	string filteredText = "";
 
-	regex pattern("\\s+");//для нахождения последовательности пробелов 
-	string result = regex_replace(text, pattern, " ");  // заміна на один пробіл
+	regex pattern("\\s+");//РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё РїСЂРѕР±РµР»РѕРІ 
+	string result = regex_replace(text, pattern, " ");  // Р·Р°РјС–РЅР° РЅР° РѕРґРёРЅ РїСЂРѕР±С–Р»
 
 	for (char& c : result) {
 		char v = tolower(c);
 
 
-		if (ABC.find(v) != string::npos)  //проверяет, является ли данный символ алфавитом или нет
+		if (ABC.find(v) != string::npos)  //РїСЂРѕРІРµСЂСЏРµС‚, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РґР°РЅРЅС‹Р№ СЃРёРјРІРѕР» Р°Р»С„Р°РІРёС‚РѕРј РёР»Рё РЅРµС‚
 		{
 			filteredText += v;
 
 		}
 		else if (isspace(v)) {
-			filteredText += ' '; //+ пробелы 
+			filteredText += ' '; //+ РїСЂРѕР±РµР»С‹ 
 		}
 	}
 	if (filteredText.back() == ' ') {
@@ -118,30 +118,30 @@ string filterSpace(string& text, string& ABC) {
 
 
 void Method(string& str) {
-	SymbolFrequencies(str);//метод для нахождения совпадания одинаковых букв 
-	bigramsWithoutIntersection(str);//медод для  біграми без перетину
-	bigramsIntersection(str);//медод для  біграми з перетином
+	SymbolFrequencies(str);//РјРµС‚РѕРґ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ СЃРѕРІРїР°РґР°РЅРёСЏ РѕРґРёРЅР°РєРѕРІС‹С… Р±СѓРєРІ 
+	bigramsWithoutIntersection(str);//РјРµРґРѕРґ РґР»СЏ  Р±С–РіСЂР°РјРё Р±РµР· РїРµСЂРµС‚РёРЅСѓ
+	bigramsIntersection(str);//РјРµРґРѕРґ РґР»СЏ  Р±С–РіСЂР°РјРё Р· РїРµСЂРµС‚РёРЅРѕРј
 }
 
 string Text() {
-	//string str1 = " Карл у Клары Украл корали ,Карла у Карлы украла кларнет  ";
+	//string str1 = " РљР°СЂР» Сѓ РљР»Р°СЂС‹ РЈРєСЂР°Р» РєРѕСЂР°Р»Рё ,РљР°СЂР»Р° Сѓ РљР°СЂР»С‹ СѓРєСЂР°Р»Р° РєР»Р°СЂРЅРµС‚  ";
 	string path = "..\\file.txt";
 	ifstream fin;
 	fin.open(path);
 	string res = "";
 	if (!fin.is_open()) {
-		cout << "Ошибка вывода файла " << endl;
+		cout << "РћС€РёР±РєР° РІС‹РІРѕРґР° С„Р°Р№Р»Р° " << endl;
 	}
 	else
 	{
-		cout << "Файл открыт" << endl;
+		cout << "Р¤Р°Р№Р» РѕС‚РєСЂС‹С‚" << endl;
 		//char ch;
-		//fin.get(ch) выводит данные по символьно 
+		//fin.get(ch) РІС‹РІРѕРґРёС‚ РґР°РЅРЅС‹Рµ РїРѕ СЃРёРјРІРѕР»СЊРЅРѕ 
 
 		string str;
-		while (!fin.eof()) // отлвливает конец вайла 
+		while (!fin.eof()) // РѕС‚Р»РІР»РёРІР°РµС‚ РєРѕРЅРµС† РІР°Р№Р»Р° 
 		{
-			str = ""; //для корректного счетия	
+			str = ""; //РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ СЃС‡РµС‚РёСЏ	
 			getline(fin, str);
 			res += str;
 		}
@@ -157,16 +157,16 @@ string Text() {
 void Log() {
 	string res = Text();
 
-	string ABC = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-	string withoutSpace = filterWithoutSpace(res, ABC); //без них
+	string ABC = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
+	string withoutSpace = filterWithoutSpace(res, ABC); //Р±РµР· РЅРёС…
 
-	string withSpace = filterSpace(res, ABC);//  с пробелами
+	string withSpace = filterSpace(res, ABC);//  СЃ РїСЂРѕР±РµР»Р°РјРё
 
-	//подставить значени (с пробелами или нет )
+	//РїРѕРґСЃС‚Р°РІРёС‚СЊ Р·РЅР°С‡РµРЅРё (СЃ РїСЂРѕР±РµР»Р°РјРё РёР»Рё РЅРµС‚ )
 
-	cout << "Таблици без пробелов " << endl;
+	cout << "РўР°Р±Р»РёС†Рё Р±РµР· РїСЂРѕР±РµР»РѕРІ " << endl;
 	Method(withoutSpace); 
-	cout << "Таблици c пробелами " << endl;
+	cout << "РўР°Р±Р»РёС†Рё c РїСЂРѕР±РµР»Р°РјРё " << endl;
 	Method(withSpace);
 }
 
